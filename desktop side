@@ -10,7 +10,7 @@ Desktopside
    11  exportfs -r
    12  vim /etc/hosts
    13  hostnamectl set-hostname server.example.com
-   14  mkdir /smbdata
+   14  mkdir /smbdataat must ha
    15  yum install samba samba-client
    16  man semanage fcontext
    17  # semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?"
@@ -39,4 +39,5 @@ Desktopside
    40  firewall-cmd --reload 
    41  cd /smbdata/
    42  touch data
-   43  history 
+   43
+   
