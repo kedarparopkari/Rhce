@@ -40,3 +40,22 @@ server side
    41  cd /smbdata/
    42  touch data
    43  history 
+   49  nmcli connection show
+   50  systemctl status firewalld.service 
+   51  nmcli con add type ethernet con-name india ifname eno1 master country
+   52  nmcli con add type ethernet con-name india ifname ens33 master country
+   53   nmcli con add type team con-name country ifname country config '{"runner": {"name": "activebackup"}}'
+   54   nmcli connection show
+   55  nmcli con add type ethernet con-name india ifname eno1 master country 
+   56   nmcli con add type ethernet con-name pak ifname eno2 master country
+   57   nmcli connection show
+   58  nmcli connection modify country ipv4.addresses=192.168.53.143/24
+   59  ip a
+   60  nmcli connection modify country ipv4.addresses=192.168.52.143/24
+   61  nmcli connection modify country ipv4.addresses="192.168.52.143/24"
+   62  nmcli connection modify country ipv4.addresses='192.168.52.143/24'
+   63  nmcli connection modify country ipv4.method static
+   64  nmcli connection show
+   65  nmcli connection down country ; nmcli connection up
+   66  nmcli connection up country 
+   67  nmcli connection show
