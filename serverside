@@ -59,3 +59,6 @@ server side
    65  nmcli connection down country ; nmcli connection up
    66  nmcli connection up country 
    67  nmcli connection show
+    69  man firewalld.richlanguage
+   70  firewall-cmd --permanent --add-rich-rule "rule family="ipv4" source address="192.168.204.180/24" service name="ssh" reject"
+   71   firewall-cmd --reload
