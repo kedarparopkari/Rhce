@@ -1,0 +1,42 @@
+Desktopside
+3  yum install nfs-utils
+    4  mkdir /nfsshare
+    5  vim /etc/exports
+    6  systemctl restart nfs-server.service 
+    7  systemctl enable nfs-server.service 
+    8  firewall-cmd --permanent --add-service=nfs
+    9  firewall-cmd --reload 
+   10  vim /etc/exports
+   11  exportfs -r
+   12  vim /etc/hosts
+   13  hostnamectl set-hostname server.example.com
+   14  mkdir /smbdata
+   15  yum install samba samba-client
+   16  man semanage fcontext
+   17  # semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?"
+   18  semanage fcontext -a -t samba_share_t "/smbdata(/.*)?"
+   19  restorecon -Rv /smbdata/
+   20  vim /etc/samba/smb.conf
+   21  useradd ram
+   22  smbpasswd -a ram
+   23  setsebool -a | grep samba
+   24  setsebool -A | grep samba
+   25  getsebool -a | grep samba
+   26  #setsebool -P samba_export_all_ro --> off
+   27  #setsebool -P samba_export_all_ro  on
+   28  setsebool -P samba_export_all_ro  on
+   29  setsebool -P samba_export_all_rw  on
+   30  getsebool -a | grep samba
+   31  ls -Zd /smbdata/
+   32  setfacl -m u:ramrwx /smbdata
+   33  setfacl -m u:ram:rwx /smbdata
+   34  useradd ramu
+   35  smbpasswd -a ramu
+   36  setfacl -m u:ramu:r-x /smbdata
+   37  systemctl restart smb nmb
+   38  systemctl enable smb nmb
+   39  firewall-cmd --permanent --add-service=samba
+   40  firewall-cmd --reload 
+   41  cd /smbdata/
+   42  touch data
+   43  history 
