@@ -62,3 +62,13 @@ server side
     69  man firewalld.richlanguage
    70  firewall-cmd --permanent --add-rich-rule "rule family="ipv4" source address="192.168.204.180/24" service name="ssh" reject"
    71   firewall-cmd --reload
+   73  mkdir /data
+   74  sem semanage fcontext
+   75  man semanage fcontext
+   76  semanage fcontext -a -t samba_share__t "/data(/.*)?"
+   77  restorecon -Rv /data
+   78  vim /etc/samba/smb.conf
+   79  systemctl restart smb nmb
+   80  systemctl enable smb nmb
+   81  firewall-cmd --reload 
+
